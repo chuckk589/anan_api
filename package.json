@@ -19,7 +19,7 @@
   },
   "scripts": {
     "prebuild": "rimraf dist",
-    "build": "nest build&&yarn run vite",
+    "build": "nest build",
     "start:dev": "SET NODE_ENV=dev&&nest start --watch",
     "start:prod": "node dist/main",
     "schema:initial": "mikro-orm schema:create --run",
