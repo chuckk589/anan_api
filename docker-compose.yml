@@ -4,7 +4,7 @@ services:
     image: adminer:latest
     restart: unless-stopped
     environment:
-      ADMINER_DEFAULT_SERVER: mysqldb
+      ADMINER_DEFAULT_SERVER: postgres
     ports:
       - 8080:8080
   postgres:
@@ -20,7 +20,7 @@ services:
     restart: unless-stopped
   app:
     depends_on:
-      - mysqldb
+      - postgres
     build:
       context: .
       target: builder
