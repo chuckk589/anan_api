@@ -7,7 +7,7 @@ const MikroORMOptions: MikroOrmModuleOptions = {
   ...(process.env.NODE_ENV === 'development' ? { debug: true, logger: console.log.bind(console) } : {}),
   entities: ['./dist/modules/mikroorm/entities/'],
   entitiesTs: ['./src/modules/mikroorm/entities/'],
-  clientUrl: 'postgresql://postgres@127.0.0.1:5432',
+  clientUrl: process.env.DB_URL,
   discovery: {
     warnWhenNoEntities: false, // by default, discovery throws when no entity is processed
     requireEntitiesArray: false, // force usage of class refrences in `entities` instead of paths
