@@ -7,7 +7,7 @@ import { UpdateAdminDto } from './dto/update-admin.dto';
 
 @ApiTags('admins')
 @ApiBearerAuth()
-@UseGuards(JwtAuthGuard)
+// @UseGuards(JwtAuthGuard)
 @Controller('admins')
 export class AdminsController {
   constructor(private readonly adminsService: AdminsService) {}

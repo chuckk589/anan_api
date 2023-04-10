@@ -14,7 +14,7 @@ export class AdminsService {
     return admins.map((admin) => new RetrieveAdminDto(admin));
   }
   async get(id: number): Promise<RetrieveAdminDto> {
-    const admin = await this.em.findOne(AdminUsers, { id }, { populate: ['user.level', 'user.referrer_id'] });
+    const admin = await this.em.findOne(AdminUsers, { user: { user_id: id } }, { populate: ['user.level', 'user.referrer_id'] });
     if (!admin) throw new NotFoundException('Admin not found');
     return new RetrieveAdminDto(admin);
   }
@@ -32,14 +32,14 @@ export class AdminsService {
     return await this.em.persistAndFlush(admin);
   }
   async update(id: number, body: UpdateAdminDto): Promise<void> {
-    const admin = await this.em.findOne(AdminUsers, { id });
+    const admin = await this.em.findOne(AdminUsers, { user: { user_id: id } });
     if (!admin) throw new NotFoundException('Admin not found');
     admin.can_add_admins = body.can_add_admins;
     body.parent && (admin.parent = body.parent.toString());
     return await this.em.persistAndFlush(admin);
   }
   async remove(id: number): Promise<void> {
-    const admin = await this.em.findOne(AdminUsers, { id });
+    const admin = await this.em.findOne(AdminUsers, { user: { user_id: id } });
     if (!admin) throw new NotFoundException('Admin not found');
     return await this.em.removeAndFlush(admin);
   }
