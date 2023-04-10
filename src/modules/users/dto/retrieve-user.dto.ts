@@ -48,7 +48,7 @@ export class RetrieveUserDto {
     this.is_blocked = user.is_blocked;
     this.referral_system = JSON.parse(user.referral_system);
     this.referral_system_year = user.referral_system_year;
-    this.referral_system_lev = JSON.parse(user.referral_system);
+    this.referral_system_lev = JSON.parse(user.referral_system_lev);
     this.activation_limit = user.activation_limit;
     this.interested = user.interested;
     this.bot_id = user.bot_id;

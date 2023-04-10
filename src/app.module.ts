@@ -17,6 +17,8 @@ import * as Joi from 'joi';
       isGlobal: true,
       validationSchema: Joi.object({
         NODE_ENV: Joi.string().valid('dev', 'prod'),
+        PASSWORD: Joi.string().required(),
+        LOGIN: Joi.string().required(),
         SECRET: Joi.string().required(),
         PORT: Joi.number().default(3000),
         DB_NAME: Joi.string().required(),
